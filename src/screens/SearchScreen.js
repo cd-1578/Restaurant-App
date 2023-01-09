@@ -9,16 +9,16 @@ const SearchScreen = () => {
   const [searchAPI, results, errorMessage] = useBusinesses();
 
   const resultsFilter = (price) => {
-    return results.filter(result => {
+    return results.filter((result) => {
       return result.price === price;
-    }); 
+    });
   };
 
   return (
     <>
       <SearchBar term={term} onTermChange={setTerm} onTermSubmit={searchAPI} />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      
+
       <ScrollView>
         <ResultsList
           style={styles.viewStyle}
@@ -28,12 +28,12 @@ const SearchScreen = () => {
         <ResultsList
           style={styles.viewStyle}
           results={resultsFilter("$$")}
-          title="Pricier but not Pompous"
+          title="Pricier"
         />
         <ResultsList
           style={styles.viewStyle}
           results={resultsFilter("$$$")}
-          title="Okay, he Daytrades."
+          title="Expensive"
         />
       </ScrollView>
     </>
